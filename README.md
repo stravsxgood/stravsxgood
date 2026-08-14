@@ -5,7 +5,7 @@
   </picture>
   <p align="center">
   <img
-    src="https://raw.githubusercontent.com/stravsxgood/stravsxgood/main/dist/github-jet.svg"
+    src="https://raw.githubusercontent.com/stravsxgood/stravsxgood/main/preview-sample.svg"
     alt="GitHub Jet Heatmap"
     width="100%"
   />
