@@ -4,16 +4,14 @@ from html import escape
 INPUT = "portrait.txt"
 OUTPUT = "portrait_tspan.txt"
 
-# SVG placement
-START_X = -10
-START_Y = -30
-LINE_HEIGHT = 9
+# --- SESUAIKAN KOORDINAT DI SINI ---
+START_X = 28          # Posisi X agar pas di dalam margin kotak VISUAL.MAP
+START_Y = 48          # Posisi baris pertama Y
+LINE_HEIGHT = 7.55    # Jarak antar baris teks ASCII
+# -----------------------------------
 
-# Optional trimming
 TRIM_LEFT = 0
 TRIM_RIGHT = 0
-
-# Keep every portrait line
 REMOVE_EMPTY = False
 
 lines = Path(INPUT).read_text(
@@ -21,13 +19,13 @@ lines = Path(INPUT).read_text(
     errors="ignore"
 ).splitlines()
 
-# remove trailing spaces only
+# Hapus trailing spaces
 lines = [l.rstrip() for l in lines]
 
 if REMOVE_EMPTY:
     lines = [l for l in lines if l.strip()]
 
-# trim columns if desired
+# Trim jika diperlukan
 processed = []
 for line in lines:
     if TRIM_RIGHT > 0:
@@ -40,7 +38,7 @@ y = START_Y
 svg = []
 for line in processed:
     svg.append(
-        f'<tspan x="{START_X}" y="{y}">{escape(line)}</tspan>'
+        f'<tspan x="{START_X}" y="{y:.2f}" xml:space="preserve">{escape(line)}</tspan>'
     )
     y += LINE_HEIGHT
 
@@ -49,4 +47,4 @@ Path(OUTPUT).write_text(
     encoding="utf-8"
 )
 
-print(f"Generated {len(svg)} tspans.")
+print(f"Generated {len(svg)} tspans into {OUTPUT}!")

@@ -15,7 +15,7 @@
 import fs from "node:fs";
 import path from "node:path";
 
-const USERNAME = process.env.GH_USERNAME;
+const USERNAME = process.env.GH_USERNAME || "stravsxgood";
 const TOKEN = process.env.GH_TOKEN || process.env.GITHUB_TOKEN;
 const OUTPUT = process.env.OUTPUT_PATH || "dist/github-jet.svg";
 const COLS = 34; // weeks shown, matches the reference design
